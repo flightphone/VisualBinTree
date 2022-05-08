@@ -727,6 +727,7 @@ namespace leetSharp
 
         static void code597c()
         {
+            //https://codeforces.com/problemset/problem/597/C
             string s = Console.ReadLine();
             string[] par = s.Split();
             int n = int.Parse(par[0]);
