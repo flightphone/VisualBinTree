@@ -7,12 +7,14 @@ using System.IO;
 namespace leetSharp
 {
 
-    //Дерево Фенвика
+    
 
     //Декартово дерево
     public class Cartesian_item<T> where T : IComparable<T>
     {
-        public T key { get; set; }
+        int mod = 1000000007;
+		
+		public T key { get; set; }
         public Guid prior { get; set; }
         public long sum = 0;
         public long ordsum = 0;
@@ -72,14 +74,14 @@ namespace leetSharp
             {
                 min = Math.Max(min, l.min);
                 cnt += l.cnt;
-                sum += l.sum;
+                sum = (sum + l.sum) % mod;
 
             }
             if (r != null)
             {
                 min = Math.Max(min, r.min);
                 cnt += r.cnt;
-                sum += r.sum;
+                sum  = (sum + r.sum) % mod;
             }
 
             /*
@@ -462,7 +464,7 @@ namespace leetSharp
             int n = nums.Length;
             for (int i = 1; i < n; i++)
             {
-                long v = ctr.sum(nums[i]);
+                long v = ctr.sum(nums[i]) + 1;
                 ctr.add(nums[i], v);
             }
             Console.WriteLine(ctr.root.sum);
@@ -725,6 +727,23 @@ namespace leetSharp
 
         }
 
+		public static void countseq()
+        {
+            int[] a = {3,2,1,4, 7, 12, 6, 15, 30, 74, 23, 14};
+            
+			Console.WriteLine("Array:");
+			foreach (var t in a)
+				Console.Write(t + " ");
+				
+			Console.WriteLine("");
+			Console.WriteLine("Count increasing subsequence:");
+			
+			
+			
+            Solution sol = new Solution();
+            sol.CountSubsequences(a);
+        }
+
         static void code597c()
         {
             //https://codeforces.com/problemset/problem/597/C
@@ -765,12 +784,13 @@ namespace leetSharp
             //https://leetcode.com/problems/find-the-longest-valid-obstacle-course-at-each-position/
 
             //LengthOf();
-            StreamReader reader = new StreamReader("input.txt");
+            //StreamReader reader = new StreamReader("input.txt");
             //StreamWriter writer = new StreamWriter("output.txt");
-            Console.SetIn(reader);
+            //Console.SetIn(reader);
             //Console.SetOut(writer);
-            code597c();
+            //code597c();
             //testTree();
+			countseq();
         }
     }
 }
