@@ -74,14 +74,14 @@ namespace leetSharp
             {
                 min = Math.Max(min, l.min);
                 cnt += l.cnt;
-                sum = (sum + l.sum) % mod;
+                sum = (sum + l.sum); //% mod;
 
             }
             if (r != null)
             {
                 min = Math.Max(min, r.min);
                 cnt += r.cnt;
-                sum  = (sum + r.sum) % mod;
+                sum  = (sum + r.sum); //% mod;
             }
 
             /*
@@ -737,8 +737,6 @@ namespace leetSharp
 				
 			Console.WriteLine("");
 			Console.WriteLine("Count increasing subsequence:");
-			
-			
 			
             Solution sol = new Solution();
             sol.CountSubsequences(a);
